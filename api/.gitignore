@@ -1,0 +1,4 @@
+node_modules
+c8-coverage
+src/.nyc_output
+src/coverage
