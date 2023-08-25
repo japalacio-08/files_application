@@ -1,10 +1,8 @@
-import dotenv from 'dotenv'
 import cacheService from './cacheService.js'
 import httpService from './httpService.js'
+import config from '../../config.js'
 
-dotenv.config()
-
-const API_KEY = `Bearer ${process.env.API_KEY}`
+const API_KEY = `Bearer ${config.env.API_KEY}`
 const EXTERNAL_API = 'https://echo-serv.tbxnet.com/v1/secret'
 
 const FILENAMES_API_URL = `${EXTERNAL_API}/files`

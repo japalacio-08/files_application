@@ -28,12 +28,7 @@ const mockedFilesRequest = {
 describe('app/controllers/filesController.js', function () {
   describe('.data', function () {
     this.beforeEach(() => {
-      cacheService.del('getAllFiles')
-      cacheService.del('getFilenames')
-      mockedFilesRequest.files.forEach(element => {
-        cacheService.del(`${element}_getFile`)
-        cacheService.del(`${element}_getAllFiles`)
-      })
+      cacheService.usingCache(true)
       sandbox.restore()
       sinon.restore()
     })
@@ -45,6 +40,7 @@ describe('app/controllers/filesController.js', function () {
         cacheService.del(`${element}_getFile`)
         cacheService.del(`${element}_getAllFiles`)
       })
+      cacheService.usingCache(false)
     })
 
     it('should return All the files', async () => {

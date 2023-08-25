@@ -1,6 +1,8 @@
 import chai from 'chai'
 import chaiHttp from 'chai-http'
 import sinon from 'sinon'
+import '../config.js'
+
 // import { app } from '../index.js'
 
 const { expect, assert } = chai

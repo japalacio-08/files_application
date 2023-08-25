@@ -8,10 +8,10 @@
     "node": ">=12.22.0 <=16"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "NODE_ENV=test node index.js",
     "lint": "standard",
-    "test": "mocha --exit",
-    "test:coverage": "c8 --check-coverage npm test"
+    "test": "NODE_ENV=test mocha --exit",
+    "test:coverage": "NODE_ENV=test c8 --check-coverage npm test"
   },
   "standard": {
     "env": [

@@ -3,16 +3,23 @@ import NodeCache from 'node-cache'
 import logService from './logService.js'
 
 const cache = new NodeCache({ stdTTL: 60 })
+let useCache = true
+
+const usingCache = (value) => {
+  useCache = value
+}
 
 const cacheDecorator = (fn, key) => {
   return function (...args) {
+    if (!useCache) { return fn(...args) }
+
     const key_ = args[0] ? `${args[0]}_${key}` : key
-    const cached = cacheService.read(key_)
+    const cached = read(key_)
     if (cached) { return cached }
 
     const execution = fn(...args)
 
-    return cacheService.write(key_, execution)
+    return write(key_, execution)
   }
 }
 
@@ -42,7 +49,7 @@ const read = (key) => {
 }
 
 const cacheService = {
-  write, read, cache, cacheDecorator, del
+  write, read, cache, cacheDecorator, del, useCache, usingCache
 }
 
 export default cacheService

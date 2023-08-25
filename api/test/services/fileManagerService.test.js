@@ -43,6 +43,7 @@ const jsonLines = {
 describe('app/services/fileManagerService.js', function () {
   describe('.getAllFiles', function () {
     this.beforeEach(() => {
+      cacheService.usingCache(true)
       cacheService.del('getAllFiles')
       cacheService.write('getFilenames', filesTest2)
       cacheService.write('test2.csv_getFile', jsonLines)
@@ -53,6 +54,7 @@ describe('app/services/fileManagerService.js', function () {
     this.afterEach(() => {
       sandbox.restore()
       sinon.restore()
+      cacheService.usingCache(false)
     })
 
     it('should return all structurated data', async function () {
