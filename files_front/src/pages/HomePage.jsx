@@ -58,28 +58,28 @@ const HomePage = ({
           <Row>
             {
               fileListerror &&
-              <Alert aria-label='alert' variant='danger'>
-                Something went wrong while fetching the avaiable files list.
-              </Alert>
+                <Alert aria-label='alert' variant='danger'>
+                  Something went wrong while fetching the avaiable files list.
+                </Alert>
             }
             {
               !fileListerror &&
-              <>
-                <Col xs='12' lg='12'>
-                  <h6>Search by File Name</h6>
-                </Col>
-                <Col xs='12' lg='10'>
-                  <Typeahead
-                    id='pagination-example'
-                    options={files}
-                    paginate={false}
-                    placeholder='Search by File Name...'
-                    onChange={setFileName}
-                    isValid={isValidSearch}
-                  >
-                    {({ onClear, selected }) => (
-                      <div style={{ position: 'relative', top: -34, float: 'right', marginRight: 30 }}>
-                        {
+                <>
+                  <Col xs='12' lg='12'>
+                    <h6>Search by File Name</h6>
+                  </Col>
+                  <Col xs='12' lg='10'>
+                    <Typeahead
+                      id='pagination-example'
+                      options={files}
+                      paginate={false}
+                      placeholder='Search by File Name...'
+                      onChange={setFileName}
+                      isValid={isValidSearch}
+                    >
+                      {({ onClear, selected }) => (
+                        <div style={{ position: 'relative', top: -34, float: 'right', marginRight: 30 }}>
+                          {
                           !!selected.length &&
                             <Button
                               variant='outline-dark'
@@ -89,17 +89,17 @@ const HomePage = ({
                             >X
                             </Button>
                         }
-                        {fileListloading && <Spinner animation='grow' size='sm' />}
-                      </div>
-                    )}
-                  </Typeahead>
-                </Col>
-                <Col xs='12' lg='2'>
-                  <div className='d-grid gap-2'>
-                    <Button disabled={!isValidSearch} onClick={handleSubmit} type='button'>Search</Button>
-                  </div>
-                </Col>
-              </>
+                          {fileListloading && <Spinner animation='grow' size='sm' />}
+                        </div>
+                      )}
+                    </Typeahead>
+                  </Col>
+                  <Col xs='12' lg='2'>
+                    <div className='d-grid gap-2'>
+                      <Button disabled={!isValidSearch} onClick={handleSubmit} type='button'>Search</Button>
+                    </div>
+                  </Col>
+                </>
             }
           </Row>
 
