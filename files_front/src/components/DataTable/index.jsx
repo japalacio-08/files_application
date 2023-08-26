@@ -26,7 +26,7 @@ const Record = ({ fileData }) => {
   )
 }
 
-const DataTable = ({ files = [], loading }) => {
+const DataTable = ({ files = [], loading = false }) => {
   return (
     <>
       <Container style={{ paddingTop: 18, textAlign: 'start' }}>
