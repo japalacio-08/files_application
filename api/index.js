@@ -1,4 +1,3 @@
-// index.js
 import express from 'express'
 import mainRoutes from './routes/mainRoutes.js'
 import filesRoutes from './routes/filesRoutes.js'
