@@ -1,46 +1,53 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import Table from 'react-bootstrap/Table'
 import Container from 'react-bootstrap/Container'
+import TableSpinner from '../TableSpinner'
+import TableAlert from '../TableAlert'
 
-const Record = ({ fileData }) => {
-  const lines = useMemo(() => {
-    return fileData.lines
-  }, [fileData])
-
+const Record = ({ fileData, headers }) => {
   return (
     <>
-      {
-      lines.map(line => {
-        return (
-          <tr key={line.hex}>
-            <td>{fileData.file}</td>
-            <td>{line.text}</td>
-            <td>{line.number}</td>
-            <td>{line.hex}</td>
-          </tr>
-        )
+      <tr key={`${fileData.key}`}>
+        {
+      headers.map(header => {
+        return <td key={`${fileData.key}_${header.key}`}>{fileData[header.key]}</td>
       })
     }
-
+      </tr>
     </>
   )
 }
 
-const DataTable = ({ files = [], loading = false }) => {
+const Records = ({ files, headers }) => {
   return (
     <>
-      <Container style={{ paddingTop: 18, textAlign: 'start' }}>
-        <Table striped bordered hover>
+      {files.map(it => <Record key={it.key} fileData={it} headers={headers} />)}
+    </>
+  )
+}
+
+const Headers = ({ headers }) => {
+  return (
+    <tr key='table_headers'>
+      {
+          headers.map(header => (<th key={header.key}>{header.label}</th>))
+        }
+    </tr>
+  )
+}
+
+const DataTable = ({ files = [], loading = false, error = null, headers = [], textAlign = 'start' }) => {
+  return (
+    <>
+      <Container style={{ paddingTop: 18, textAlign }}>
+        <Table striped bordered hover responsive>
           <thead>
-            <tr>
-              <th>File Name</th>
-              <th>Text</th>
-              <th>Number</th>
-              <th>Hex</th>
-            </tr>
+            <Headers headers={headers} />
           </thead>
           <tbody>
-            {files.map(it => <Record key={it.file} fileData={it} />).flat(Infinity)}
+            {loading && <TableSpinner colSpan={4} />}
+            {error && <TableAlert colSpan={4} type='danger' message={error} />}
+            <Records files={files} headers={headers} />
           </tbody>
         </Table>
       </Container>

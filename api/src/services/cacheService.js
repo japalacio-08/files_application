@@ -1,4 +1,3 @@
-// store data here
 import NodeCache from 'node-cache'
 import logService from './logService.js'
 

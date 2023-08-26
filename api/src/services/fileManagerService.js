@@ -36,7 +36,6 @@ const getFile = async (fileName) => {
           }
         )
       }
-
     })
 
     return { file: fileName, lines }

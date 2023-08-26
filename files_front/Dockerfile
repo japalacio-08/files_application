@@ -1,13 +1,13 @@
 FROM node:16
 
-WORKDIR /usr/app
+WORKDIR /files_front
 
 COPY package*.json ./
 
 RUN npm install
 
-COPY . .
+COPY . ./
 
 EXPOSE 3000
 
-CMD [ "npm", "start" ]
+CMD ["npm", "start"]

@@ -2,9 +2,6 @@ import { expect, sandbox, sinon } from '../testHelper.js'
 import fileManagerService from '../../src/services/fileManagerService.js'
 import httpService from '../../src/services/httpService.js'
 import cacheService from '../../src/services/cacheService.js'
-import dotenv from 'dotenv'
-
-dotenv.config()
 
 const files = [
   'test1.csv',
@@ -27,11 +24,6 @@ const fileString = 'file,text,number,hex\ntest2.csv,kftkC\ntest2.csv,wAleHWLiADX
 const jsonLines = {
   file: 'text2.csv',
   lines: [
-    {
-      text: 'kftkC',
-      number: null,
-      hex: null
-    },
     {
       text: 'wAleHWLiADX',
       number: 9,

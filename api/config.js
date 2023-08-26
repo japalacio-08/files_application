@@ -1,11 +1,10 @@
-import dotenv from 'dotenv'
 import cacheService from './src/services/cacheService.js'
-dotenv.config()
 
 export const env = {
+  current: process.env.NODE_ENV,
   development: process.env.NODE_ENV === 'development',
   test: process.env.NODE_ENV === 'test',
-  API_KEY: process.env.API_KEY
+  API_KEY: 'aSuperSecretKey'
 }
 
 export const load = () => {

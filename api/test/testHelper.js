@@ -3,8 +3,6 @@ import chaiHttp from 'chai-http'
 import sinon from 'sinon'
 import '../config.js'
 
-// import { app } from '../index.js'
-
 const { expect, assert } = chai
 const sandbox = sinon.createSandbox()
 
@@ -16,5 +14,4 @@ export {
   chai,
   sinon,
   sandbox
-  // app
 }

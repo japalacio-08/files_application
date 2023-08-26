@@ -2,9 +2,18 @@ version: '3'
 services:
   api:
     build: ./api
+    volumes:
+      - ./api:/api
     ports:
       - "3001:3001"
-  frontend:
+  web:
     build: ./files_front
+    volumes:
+      - ./files_front:/files_front
     ports:
       - "3000:3000"
+    environment:
+      - CHOKIDAR_USEPOLLING=true # create-ui-app <= 5.x
+      - WATCHPACK_POLLING=true # create-ui-app >= 5.x
+      - FAST_REFRESH=true
+      - WDS_SOCKET_PORT=3000 # The mapped port on your host machine

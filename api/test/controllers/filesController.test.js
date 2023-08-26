@@ -4,8 +4,16 @@ import cacheService from '../../src/services/cacheService.js'
 
 const getFileLines = (file) => {
   const lines = [
-    { text: 'kftkC', number: null, hex: null },
-    { text: 'wAleHWLiADX', number: 9, hex: null }
+    {
+      text: 'kftkC',
+      number: 8,
+      hex: '444c81c2dc0ee2849e7b9355013d2b92'
+    },
+    {
+      text: 'wAleHWLiADX',
+      number: 9,
+      hex: '444c81c2dc0ee2849e7b9355013d2b93'
+    }
   ]
 
   return { file, lines }

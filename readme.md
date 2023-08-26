@@ -7,6 +7,51 @@
 3. Run migrations (See Makefile)
 4. Run seeds (See Makefile)
 
+## Directories
+
+### 1. API
+
+```sh
+cd ./api
+```
+
+### 2. WEB APP
+
+```sh
+cd ./files_front
+```
+
+
+## Install dependencies
+
+```sh
+npm install
+```
+
+## Run tests
+
+```sh
+npm test
+```
+
+## Check linter
+
+```sh
+npm run lint
+```
+
+OR
+
+```sh
+npm run lint:fix # In case you want to autofix all the linter incidences
+```
+
+## CI (Continuous Integration) => Linter + Tests + Coverage
+
+```sh
+npm run ci # this command checks linter, run the tests and generate a coverage report
+```
+
 ## Start the Application
 
 ### 1. Using Docker

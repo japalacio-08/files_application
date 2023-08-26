@@ -1,8 +1,10 @@
-import { createStore, applyMiddleware } from 'redux'
-import rootReducer from './reducers' // Esto importará el archivo combinado de reducers
+import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { fileReducer, fileListReducer } from './reducers'
 import thunk from 'redux-thunk'
 
-const store = createStore(
+const rootReducer = combineReducers({ file: fileReducer, fileList: fileListReducer })
+
+export const store = createStore(
   rootReducer,
   applyMiddleware(thunk)
 )

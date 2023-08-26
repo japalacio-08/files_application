@@ -1,5 +1,6 @@
 import axios from 'axios'
 import cacheService from './cacheService.js'
+import logService from './logService.js'
 
 const buildHeaders = (extras = {}) => {
   return {
@@ -18,6 +19,7 @@ const httpGet = async (url, headers = {}) => {
     )
     return response.data
   } catch (error) {
+    logService.error({ message: error.response ?? error.message, type: 'error' })
     return null
   }
 }
