@@ -12,18 +12,31 @@ const getAllFiles = async (filename = '') => {
   const allFiles = await Promise.all(
     fileNames.map(it => getCachedFile(it))
   )
-  if (!filename) { return allFiles }
+  const availableFiles = allFiles.filter(it => it.lines.length > 0)
 
-  return allFiles.filter(it => it.file.includes(filename))
+  if (!filename) { return availableFiles }
+
+  return availableFiles.filter(it => it.file.includes(filename))
 }
 
 const getFile = async (fileName) => {
   const smbUrl = `${EXTERNAL_API}/file/${fileName}`
   try {
     const fileContent = await httpService.get(smbUrl, { Authorization: API_KEY })
-    const lines = fileContent.trim().split('\n').slice(1).map(line => {
+    const lines = []
+
+    fileContent.trim().split('\n').slice(1).forEach(line => {
       const [, text, number, hex] = line.split(',')
-      return { text, number: number ? parseInt(number) : null, hex: hex ?? null }
+      if (number && hex) {
+        lines.push(
+          {
+            text,
+            number: parseInt(number),
+            hex
+          }
+        )
+      }
+
     })
 
     return { file: fileName, lines }
@@ -33,8 +46,12 @@ const getFile = async (fileName) => {
 }
 
 const getFilenames = async () => {
-  const { files } = await httpService.get(FILENAMES_API_URL, { Authorization: API_KEY })
-  return files
+  try {
+    const { files } = await httpService.get(FILENAMES_API_URL, { Authorization: API_KEY })
+    return files
+  } catch (error) {
+    return []
+  }
 }
 
 // Decorates for caching

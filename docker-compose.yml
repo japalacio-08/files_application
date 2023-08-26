@@ -3,7 +3,7 @@ services:
   api:
     build: ./api
     ports:
-      - "3000:3000"
+      - "3001:3001"
   # frontend:
   #   build: ./myFrontend
   #   ports:
