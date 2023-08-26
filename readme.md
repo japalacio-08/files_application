@@ -50,7 +50,7 @@ To verify that your application is running, you can open your browser and put th
 
 ```
 http://localhost:3001/ => for check the health of the API
-http://localhost:3000/ => for check the health of the WEB APP
+http://localhost:3000/ => for open the WEB APP in your browser
 ```
 
 But if you want to use all available requests, you must use postman to interact with the application (https://www.postman.com/downloads/)
