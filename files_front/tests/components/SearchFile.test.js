@@ -1,4 +1,4 @@
-import { screen, render, fireEvent, act, waitFor } from '@testing-library/react'
+import { screen, render, fireEvent, waitFor } from '@testing-library/react'
 import SearchFile from '../../src/components/SearchFile'
 import axios from 'axios'
 import '../setupTest'
@@ -48,10 +48,8 @@ describe('SearchFile', () => {
       optionElement = screen.getByRole('option')
     })
 
-
     // Assert
     expect(optionElement).toBeInTheDocument()
-
   })
 
   it('should error message if fileListerror is true', async () => {
@@ -61,14 +59,12 @@ describe('SearchFile', () => {
     const fetchFiles = jest.fn()
 
     // Act
-    render(<SearchFile fileListerror={fileListerror} fetchFiles={fetchFiles}/>)
+    render(<SearchFile fileListerror={fileListerror} fetchFiles={fetchFiles} />)
 
     const optionElement = screen.getByText('Something went wrong while fetching the avaiable files list.')
 
-
     // Assert
     expect(optionElement).toBeInTheDocument()
-
   })
 
   it('should works fine if we do not send fileListerror', async () => {
@@ -77,13 +73,12 @@ describe('SearchFile', () => {
     const fetchFiles = jest.fn()
 
     // Act
-    render(<SearchFile fetchFiles={fetchFiles}/>)
+    render(<SearchFile fetchFiles={fetchFiles} />)
 
     const searchInput = screen.getByRole('combobox')
 
     // Assert
     expect(searchInput).toBeInTheDocument()
-
   })
 
   it('use times button for remove search', () => {
