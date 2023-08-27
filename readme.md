@@ -4,8 +4,6 @@
 
 1. Docker
 2. Docker compose (Only in case the desktop version is not installed)
-3. Run migrations (See Makefile)
-4. Run seeds (See Makefile)
 
 ## Directories
 
