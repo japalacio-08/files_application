@@ -20,11 +20,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "./node_modules/.bin/react-scripts start",
+    "build": "./node_modules/.bin/react-scripts build",
     "test": "jest --coverage",
     "test:coverage": "c8 --check-coverage npm test",
-    "eject": "react-scripts eject",
+    "eject": "./node_modules/.bin/react-scripts eject",
     "lint": "standard",
     "lint:fix": "standard --fix",
     "ci": "standard && npm test"

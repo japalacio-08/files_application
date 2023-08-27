@@ -4,12 +4,14 @@ services:
     build: ./api
     volumes:
       - ./api:/api
+      - api_node_modules:/api/node_modules
     ports:
       - "3001:3001"
   web:
     build: ./files_front
     volumes:
       - ./files_front:/files_front
+      - web_node_modules:/files_front/node_modules
     ports:
       - "3000:3000"
     environment:
@@ -17,3 +19,6 @@ services:
       - WATCHPACK_POLLING=true # create-ui-app >= 5.x
       - FAST_REFRESH=true
       - WDS_SOCKET_PORT=3000 # The mapped port on your host machine
+volumes:
+  api_node_modules:
+  web_node_modules:
