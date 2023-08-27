@@ -46,8 +46,8 @@ const DataTable = ({ files = [], loading = false, error = null, headers = [], te
           </thead>
           <tbody>
             {loading && <TableSpinner colSpan={4} />}
-            {error && <TableAlert colSpan={4} type='danger' message={error} />}
-            <Records files={files} headers={headers} />
+            {!loading && error && <TableAlert colSpan={4} type='danger' message={error} />}
+            {!loading && !error && <Records files={files} headers={headers} /> }
           </tbody>
         </Table>
       </Container>
