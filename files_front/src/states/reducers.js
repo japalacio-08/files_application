@@ -12,7 +12,7 @@ export const fileReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        // fileList: []
+        fileList: []
       }
     case Actions.FETCH_FILES_SUCCESS:
       return {
@@ -25,7 +25,7 @@ export const fileReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.error,
-        // fileList: []
+        fileList: []
       }
     default:
       return state
@@ -43,7 +43,7 @@ export const fileListReducer = (state = initialFileListState, action) => {
     case Actions.FETCH_FILE_LIST_START:
       return {
         ...state,
-        loading: true,
+        loading: true
         // files: []
       }
     case Actions.FETCH_FILE_LIST_SUCCESS:
@@ -56,7 +56,7 @@ export const fileListReducer = (state = initialFileListState, action) => {
       return {
         ...state,
         loading: false,
-        error: action.error,
+        error: action.error
         // files: []
       }
     default:
