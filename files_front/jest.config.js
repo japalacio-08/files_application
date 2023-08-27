@@ -1,7 +1,8 @@
 const config = {
   verbose: true,
   clearMocks: true,
-  testEnvironment: 'jsdom',
+  testEnvironment: 'jest-environment-jsdom',
+  setupFiles: ['./jest.setup.js'],
   transform: {
     '\\.[jt]sx?$': 'babel-jest'
   },
